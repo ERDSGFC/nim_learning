@@ -21,3 +21,4 @@ echo d
 echo e
 dec(d, 2)
 echo d
+echo succ(d)

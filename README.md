@@ -108,7 +108,7 @@ var
 字符类型,大小总是一字节,字符字面值用单引号括起来  
 字符可以用 ==, <, <=, >, >= 操作符比较。 $ 操作符将一个 char 转换成一个 string 。字符不能和整型混合；用 ord 过程得到一个 char 的序数值。 从整型到 char 转换使用 chr 过程
 `inc, ord, dec `
-#### 6.字符串类型 `string`
+#### 6.字符串类型 `string` [示例](https://github.com/ERDSGFC/nim_learning/blob/develop/test/type_string.nim)
 ```nim
 var 
     a: string
@@ -126,9 +126,40 @@ var
 无损 自动类型转换 在表达式中使用不同类型的整数时执行。如果失真，会抛出 EOutOfRange 异常（如果错误没能在编译时检查出来）
 #### 8.浮点型 `float float32 float64`
 使用 toInt 和 toFloat 过程来转换
-#### 9.枚举 `enum`
+#### 9.枚举 `enum` [示例](https://github.com/ERDSGFC/nim_learning/blob/develop/test/type_enum.nim)
+```nim
+type
+    Direction = enum
+        north, east, south, west
+var a = north
+    
+```
 #### 10.子范围 `range`
+```nim
+type
+  MySubrange = range[0..5]
+```
+枚举、整型、 char 、 bool （和子范围）叫做序数类型。序数类型有一些特殊操作：
+| ord(x) | 返回表示 x 的整数值 |
+| ------ | ----------------- |
+|inc(x)	|x 递增1|
+|inc(x, n) | x 递增 n; n 是整数 |
+|dec(x)	|x 递减1|
+|dec(x, n)|	x 递减 n; n 是整数|
+|succ(x)|	返回 x 的下一个值|
+|succ(x, n)|	返回 x 后的第n个值|
+|pred(x)|	返回 x 的前一个值|
+|pred(x, n)|	返回 x 前的第n个值|
+
 #### 11.集合类型 `set`
+集合模拟了数学集合的概念。 集合的基类型只能是固定大小的序数类型，它们是:
+* int8-int16
+* uint8/byte-uint16
+* char
+* enum
+```nim
+
+```
 #### 12.位字段 
 #### 13.数组 `array`
 #### 14.序列 `seq`
