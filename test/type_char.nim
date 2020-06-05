@@ -5,3 +5,17 @@ var
     d = 'd'
 if a == b:
     echo "a 和 b 相等"
+elif a < b:
+    echo "a 小于 b"
+else:
+    echo "a 和 b 不相等"
+echo a.ord # 0
+echo b.ord # 98
+echo typeof a # char
+echo typeof(a) # char
+echo $b.typeof # char
+echo ($b).typeof # string
+inc(d, 1)
+echo d
+dec(d, 2)
+echo d

@@ -64,6 +64,7 @@ var
     d,e: string
     f: float
     g: char
+    #序数类型（由整数，bool，字符，枚举（及其子范围）类型组成）
 
 const x = "abc" #常量
 const input = readLine(stdin) # 错误: 需要常量表达式
@@ -74,16 +75,26 @@ let input = readLine(stdin)   # 可以
 ```
 注意，使用过程对声明的多个变量进行赋值时可能会产生意外结果：编译器会 展开 赋值并`多次调用该过程`。 如果程序的结果取决于副作用，变量可能最终会有不同的值。为了安全起见，多赋值时使用没有副作用的`过程`。
 
-#### 4. 布尔类型 `bool`  
+#### 4. 布尔类型 `bool`  [示例](https://github.com/ERDSGFC/nim_learning/blob/develop/test/type_bool.nim)
 ```nim
 var
     a: bool
     b: bool = true
     c = false
 ```
-为布尔类型定义操作符 not, and, or, xor, <, <=, >, >=, !=, ==
+为布尔类型定义操作符 not, and, or, xor, <, <=, >, >=, !=, ==  
 
-5. 字符串
+#### 5. 字符类型 `char`  [示例](https://github.com/ERDSGFC/nim_learning/blob/develop/test/type_char.nim)
+```nim
+var 
+    a: char
+    b: char = 'b'
+    b1: char = "b" #错误
+    d = 'd'
+```
+字符类型,大小总是一字节,字符字面值用单引号括起来  
+字符可以用 ==, <, <=, >, >= 操作符比较。 $ 操作符将一个 char 转换成一个 string 。字符不能和整型混合；用 ord 过程得到一个 char 的序数值。 从整型到 char 转换使用 chr 过程
+`inc, ord, dec `
 ```nim
 echo "换行"
 echo '\t'
