@@ -3,6 +3,7 @@ var
     b: char = 'b'
     # c: char = "a" 错误
     d = 'd'
+    e = '\t' # 换行符
 if a == b:
     echo "a 和 b 相等"
 elif a < b:
@@ -17,5 +18,6 @@ echo $b.typeof # char
 echo ($b).typeof # string
 inc(d, 1)
 echo d
+echo e
 dec(d, 2)
 echo d

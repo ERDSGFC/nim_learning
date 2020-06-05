@@ -71,6 +71,17 @@ const input = readLine(stdin) # 错误: 需要常量表达式
 
 let x= "abc" #只读变量
 let input = readLine(stdin)   # 可以
+-----------------------------------------------------
+var a = 1_2
+echo a
+proc test(a: var int,b:int=1): int =
+      a = a + 1
+      return a
+
+var c,d = test(a)
+
+echo c,'\t',d,'\t',a
+echo typeof(c)
 
 ```
 注意，使用过程对声明的多个变量进行赋值时可能会产生意外结果：编译器会 展开 赋值并`多次调用该过程`。 如果程序的结果取决于副作用，变量可能最终会有不同的值。为了安全起见，多赋值时使用没有副作用的`过程`。
@@ -81,6 +92,7 @@ var
     a: bool
     b: bool = true
     c = false
+c(false) == 0 and b(true) == 1
 ```
 为布尔类型定义操作符 not, and, or, xor, <, <=, >, >=, !=, ==  
 
@@ -91,16 +103,33 @@ var
     b: char = 'b'
     b1: char = "b" #错误
     d = 'd'
+    e = '\t'
 ```
 字符类型,大小总是一字节,字符字面值用单引号括起来  
 字符可以用 ==, <, <=, >, >= 操作符比较。 $ 操作符将一个 char 转换成一个 string 。字符不能和整型混合；用 ord 过程得到一个 char 的序数值。 从整型到 char 转换使用 chr 过程
 `inc, ord, dec `
+#### 6.字符串类型 `string`
 ```nim
-echo "换行"
-echo '\t'
-echo 'a' #字符
-echo "制表符\t制表符" #字符串
-echo r"C:\program files\nim" #原始字符串
-var html = """<div></div>"""
+var 
+    a: string
+    b: string = "换行\t嘿嘿"
+    c = "制表符\t制表符"
+    d = r"C:\program files\nim" #原始字符串
+    html = """<div></div>""" #多行原始字符串
 ``` 
+字符串可以追加，而且非常高效,内置 len 过程获取  
+你可以用 & 操作符拼接字符串和 add 追加到一个字符串  
+索引操作符 s[i] 表示 s 的第i个 字符 , 不是第i个 unichar 
+#### 7.整型 `int int8 int16 int32 int64 uint uint8 uint16 uint32 uint64`
+整数支持通用操作符 + - * div mod < <= == != > >= 。 也支持 and or xor not 操作符，并提供 按位 操作。 左移用 shl ，右移用 shr 。位移操作符实参总是被当作 无符号整型 。 普通乘法或除法可以做 算术位移 。
+无符号操作不会引起上溢和下溢。
+无损 自动类型转换 在表达式中使用不同类型的整数时执行。如果失真，会抛出 EOutOfRange 异常（如果错误没能在编译时检查出来）
+#### 8.浮点型 `float float32 float64`
+使用 toInt 和 toFloat 过程来转换
+#### 9.枚举 `enum`
+#### 10.子范围 `range`
+#### 11.集合类型 `set`
+#### 12.位字段 
+#### 13.数组 `array`
+#### 14.序列 `seq`
 
