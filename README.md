@@ -138,10 +138,14 @@ var a = north
 ```nim
 type
   MySubrange = range[0..5]
+var
+    c: MySubrange = 2
+    d: range[0..15]
 ```
 枚举、整型、 char 、 bool （和子范围）叫做序数类型。序数类型有一些特殊操作：
-| ord(x) | 返回表示 x 的整数值 |
+|方法| 用法|
 | ------ | ----------------- |
+|ord(x) | 返回表示 x 的整数值 |
 |inc(x)	|x 递增1|
 |inc(x, n) | x 递增 n; n 是整数 |
 |dec(x)	|x 递减1|
@@ -158,9 +162,70 @@ type
 * char
 * enum
 ```nim
+type
+  CharSet  = set[char]
+var
+    d: CharSet 
+    d1: set[int16] = {1'i16, 6}
+d = {'a'..'z', '0'..'9'} # 构造一个包含'a'到'z'和'0'到'9'的集合
 
 ```
+|操作符|含义|
+|-----| ----|
+|A + B|	并集|
+|A * B|	交集|
+|A - B|	差集|
+|A == B|	相等|
+|A <= B|	子集|
+|A < B|	真子集|
+|e in A|	元素|
+|e notin A|	A不包含元素e|
+|contains(A, e)|	包含元素e|
+|card(A)|	A的基 (集合A中的元素数量)|
+|incl(A, elem)|	同 A = A + {elem}|
+|excl(A, elem)|	同 A = A - {elem}|
 #### 12.位字段 
 #### 13.数组 `array`
-#### 14.序列 `seq`
+```nim
+type
+  IntArray = array[0..5, int] # 一个索引为0..5的数​组
+var
+  x: IntArray
+x = [1, 2, 3, 4, 5, 6]
+for i in low(x)..high(x):
+  echo x[i]
+```
+数组是固定长度的容器。数组中的元素具有相同的类型。数组索引类型可以是任意序数类型。
+#### 14.序列 `seq` `动态长度`
+```nim
+#序列总是以从零开始的 int 类型索引。 len , low 和 high 操作符也可用于序列。 x[i] 标记可以用于访问 x 的第i个元素
+var
+  x: seq[int] # 整数序列引用
+x = @[1, 2, 3, 4, 5, 6] # @ 把数组转成分配在堆上的序列
+for i, value in @[3, 4, 5]:
+  echo "index: ", $i, ", value:", $value
+```
+因为序列是大小可变的它们总是分配在堆上，被垃圾回收。
+#序列可以用数组构造器 [] 数组到序列操作符 @ 构成。`另一个为序列分配空间的方法是调用内置 newSeq 过程`
 
+#### 15 开放数组
+```nim
+var
+  fruits:   seq[string]       # 字符串序列用 '@[]' 初始化
+  capitals: array[3, string]  # 固定大小的字符串数组
+
+capitals = ["New York", "London", "Berlin"]   # 数组 'capitals' 允许只有三个元素的赋值
+fruits.add("Banana")          # 序列 'fruits' 在运行时动态扩展
+fruits.add("Mango")
+
+proc openArraySize(oa: openArray[string]): int =
+  oa.len
+
+assert openArraySize(fruits) == 2     # 过程接受一个序列作为形参
+assert openArraySize(capitals) == 3   # 也可以是一个数组
+```
+#### 16 可变参数
+#### 17 切片
+#### 18 对象 `object`
+#### 19 元组 `tuple`
+#### 20 引用和指针 `ref, ptr`

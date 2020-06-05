@@ -27,4 +27,4 @@ type
   MySubrange = range[0..5]
 var
     c: MySubrange = 2
-echo succ(d)
+echo succ(c)
