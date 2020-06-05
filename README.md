@@ -25,15 +25,15 @@ TAGS: 静态类型 编译型 系统编程
 4. <tulayang@nim-lang-cn.org>
 
 -----
-### 基础（https://nim-lang-cn.org/docs/tut1.html）
-1. 编译并运行命令
+### 基础 [Nim教程 (I)](https://nim-lang-cn.org/docs/tut1.html)
+#### 1. 编译并运行命令
 [更多编译的文档详情](https://nim-lang-cn.org/docs/nimc.html)
 
 > nim compile --run object_file.nim # 普通命令  
 > nim compile --run object_file.nim arg1 arg2 # 添加参数  
 > nim c -r object_file.nim # 简写  
 > nim c -d:danger object_file.nim # 生成性能更好的代码  
-2. 注释
+#### 2. 注释
 ```nim 
 # 注释
 
@@ -50,9 +50,9 @@ var myVariable:int ##文档注释
 
 discard """这也是注释"""
 ```
-文档注释是令牌；它们只允许在输入文件中的某些位置，因为它们属于语法树！这个功能可实现更简单的文档生成器。  
+文档注释是令牌；它们只允许在输入文件中的某些位置，因为它们属于语法树！这个功能可实现更简单的文档生成器。`暂时没理解`  
 
-3. 声明变量  
+#### 3. 声明变量  
 ```nim
 var 
     a: bool
@@ -72,9 +72,18 @@ let x= "abc" #只读变量
 let input = readLine(stdin)   # 可以
 
 ```
-注意，使用过程对声明的多个变量进行赋值时可能会产生意外结果：编译器会 展开 赋值并`多次调用该过程`。 如果程序的结果取决于副作用，变量可能最终会有不同的值。为了安全起见，多赋值时使用没有副作用的`过程`。  
+注意，使用过程对声明的多个变量进行赋值时可能会产生意外结果：编译器会 展开 赋值并`多次调用该过程`。 如果程序的结果取决于副作用，变量可能最终会有不同的值。为了安全起见，多赋值时使用没有副作用的`过程`。
 
-4. 字符串
+#### 4. 布尔类型 `bool`  
+```nim
+var
+    a: bool
+    b: bool = true
+    c = false
+```
+为布尔类型定义操作符 not, and, or, xor, <, <=, >, >=, !=, ==
+
+5. 字符串
 ```nim
 echo "换行"
 echo '\t'
