@@ -1,0 +1,1 @@
+proc add_c*(a, b: int): int {.stdcall, dynlib: "(libadd.dll|libdd.dll)", importc: "addNum".}
