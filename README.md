@@ -8,15 +8,29 @@ Nim 学习记录
 
 TAGS: 静态类型 编译型 系统编程
 
-* [__锚点__](#16-可变参数)
+<!-- * [__锚点__](#16-可变参数) -->
 
 * [__下载地址__][12]
 
 [12]: https://nim-lang-cn.org/install.html 
 
-* [__nim中文社区__](https://nim-lang-cn.org/)
+* [__nim中文网站__](https://nim-lang-cn.org/)
 
-* [__nim手册__](https://nim-lang-cn.org/docs/manual.html) 
+* [__中文手册__](https://nim-lang-cn.org/docs/manual.html)
+
+* [__论坛__](https://forum.nim-lang.org/)
+
+* [__index__](https://nim-lang.org/docs/theindex.html)
+
+* [__快速index__](http://doc.nim-monster.com/theindex.html)
+
+* [__标准库风格__](https://nim-lang-cn.org/docs/nep1.html)
+
+* [__包管理工具__](https://github.com/nim-lang/nimble#readme)
+
+* [__其他可用工具__](https://nim-lang-cn.org/docs/tools.html)
+
+* [__官方演练场__](https://play.nim-lang.org)
 ---
 ### nim邮件组 : 
 
@@ -28,6 +42,9 @@ TAGS: 静态类型 编译型 系统编程
 
 -----
 ### 基础 [Nim教程 (I)](https://nim-lang-cn.org/docs/tut1.html)
+* [注释](#2-注释)
+* [声明变量](#3-声明变量)
+
 #### 1. 编译并运行命令
 [更多编译的文档详情](https://nim-lang-cn.org/docs/nimc.html)
 
@@ -35,6 +52,8 @@ TAGS: 静态类型 编译型 系统编程
 > nim compile --run object_file.nim arg1 arg2 # 添加参数  
 > nim c -r object_file.nim # 简写  
 > nim c -d:danger object_file.nim # 生成性能更好的代码  
+> nim c -o:path/name -r object_file.nim # 生成的文件名
+> nim c --threads:on|off -r object_file.nim # 开启多线程支持
 #### 2. 注释
 ```nim 
 # 注释
@@ -52,7 +71,7 @@ var myVariable:int ##文档注释
 
 discard """这也是注释"""
 ```
-文档注释是令牌；它们只允许在输入文件中的某些位置，因为它们属于语法树！这个功能可实现更简单的文档生成器。`暂时没理解`  
+文档注释是令牌；它们只允许在输入文件中的某些位置，因为它们属于语法树！这个功能可实现更简单的文档生成器。[`文档注释链接`](https://nim-lang-cn.org/docs/docgen.html)  
 
 #### 3. 声明变量  
 ```nim
