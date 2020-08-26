@@ -20,7 +20,7 @@ TAGS: 静态类型 编译型 系统编程
 
 * [__论坛__](https://forum.nim-lang.org/)
 
-* [__index__](https://nim-lang.org/docs/theindex.html)
+* [__index__](https://nim-lang-cn.org/docs/theindex.html)
 
 * [__快速index__](http://doc.nim-monster.com/theindex.html)
 
